@@ -18,6 +18,7 @@ body {
     justify-content: center; /* 水平居中對齊 */
     margin: 0 auto; /* 自動邊距使頁面居中 */
     padding: 20px; /* 增加內邊距 */
+    min-height: 100vh;
 }
 
 /* 數字顯示區 */
@@ -121,7 +122,24 @@ body {
     margin: 15px 10px; /* 設置邊距 */
     background: #dc3545; /* 背景顏色 */
 }
-
+/* 網站尾頁 */
+.footer{
+    height: 80px;
+    width: 100%;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    h1{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    a{
+        text-decoration: none;
+        color: #2980b9;
+    }
+}
 /* 響應式設計 */
 @media (max-width: 700px) {
     .page {
