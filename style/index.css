@@ -1,7 +1,7 @@
 /* 初始化 */
 * {
-    margin: 0;
-    padding: 0; /* 添加padding以確保各元素間距一致 */
+    margin: 0; /* 設置默認邊距為0 */
+    padding: 0; /* 設置默認內邊距為0，確保各元素間距一致 */
     box-sizing: border-box; /* 確保元素的總寬度和高度符合設置 */
 }
 
@@ -10,53 +10,55 @@ body {
     background-color: #f4f4f4; /* 設置背景顏色 */
 }
 
-/* 頁面 */
+/* 頁面容器 */
 .page {
-    display: flex;
+    display: flex; /* 使用flexbox布局 */
     flex-direction: row; /* 水平方向排列 */
-    align-items: center; /* 垂直居中 */
-    justify-content: center;
-    margin: 0 auto; 
+    align-items: center; /* 垂直居中對齊 */
+    justify-content: center; /* 水平居中對齊 */
+    margin: 0 auto; /* 自動邊距使頁面居中 */
     padding: 20px; /* 增加內邊距 */
 }
 
 /* 數字顯示區 */
 .display {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* 使用 align-items 而不是 align-content */
+    display: flex; /* 使用flexbox布局 */
+    justify-content: center; /* 水平居中對齊 */
+    align-items: center; /* 垂直居中對齊 */
     margin-right: 20px; /* 在顯示區和控制台之間增加間距 */
     border: 5px solid #333; /* 使用深色邊框 */
-    border-radius: 25px;
-    height: 500px;
-    width: 300px;
+    border-radius: 25px; /* 圓角邊框 */
+    height: 500px; /* 設置高度 */
+    width: 300px; /* 設置寬度 */
     background-color: #fff; /* 增加背景顏色 */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 增加陰影效果 */
 }
 
+/* 數字顯示標題 */
 .display h1 {
     font-size: 150px; /* 調整字體大小 */
     color: #2c3e50; /* 設置字體顏色 */
 }
 
-/* 控制台 */
+/* 控制台容器 */
 .console {
-    display: flex;
+    display: flex; /* 使用flexbox布局 */
     flex-direction: column; /* 垂直排列 */
 }
 
-.block1, .block3, .block2 {
+/* 控制台的區塊 */
+.block1, .block2, .block3 {
     margin: 10px 0; /* 增加區塊之間的間距 */
-    display: flex; /* 使用flex來排列子元素 */
+    display: flex; /* 使用flexbox布局 */
     flex-direction: column; /* 垂直排列 */
     align-items: center; /* 子元素水平居中 */
 }
 
-/* 控制台的按鈕 */
+/* 控制台的按鈕樣式 */
 .console button {
-    margin: 10px 0;
-    height: 50px;
-    width: 100px;
+    margin: 10px 0; /* 增加按鈕間距 */
+    height: 50px; /* 按鈕高度 */
+    width: 100px; /* 按鈕寬度 */
     font-size: 20px; /* 調整字體大小 */
     background-color: #3498db; /* 按鈕背景顏色 */
     color: white; /* 按鈕文字顏色 */
@@ -66,21 +68,23 @@ body {
     transition: background-color 0.3s; /* 增加過渡效果 */
 }
 
+/* 按鈕懸停效果 */
 .console button:hover {
     background-color: #2980b9; /* 懸停時改變背景顏色 */
 }
 
-/* 其他 CSS 規則保持不變 */
+/* 控制台的文本區域樣式 */
 .console textarea {
-    width: 300px;
-    height: 250px;
-    font-size: 20px;
+    width: 300px; /* 設置寬度 */
+    height: 250px; /* 設置高度 */
+    font-size: 20px; /* 調整字體大小 */
     border: 2px solid #3498db; /* 設置邊框顏色 */
     border-radius: 5px; /* 圓角邊框 */
     padding: 10px; /* 增加內邊距 */
     transition: border-color 0.3s; /* 增加過渡效果 */
 }
 
+/* 聚焦時文本區域邊框顏色變化 */
 .console textarea:focus {
     border-color: #2980b9; /* 聚焦時改變邊框顏色 */
     outline: none; /* 去掉聚焦框 */
@@ -88,31 +92,37 @@ body {
 
 /* 批量增加區域 */
 .block2 {
-    display: flex; /* 使用flex來排列子元素 */
+    display: flex; /* 使用flexbox布局 */
     flex-direction: column; /* 垂直排列 */
     align-items: center; /* 子元素水平居中 */
 }
 
+/* 批量增加區域的輸入框樣式 */
 .block2 input {
     height: 40px; /* 增加輸入框高度 */
-    width: 180px;
-    font-size: 20px;
+    width: 180px; /* 設置輸入框寬度 */
+    font-size: 20px; /* 調整字體大小 */
     padding: 5px; /* 增加內邊距 */
     border: 2px solid #3498db; /* 設置邊框顏色 */
     border-radius: 5px; /* 圓角邊框 */
     transition: border-color 0.3s; /* 增加過渡效果 */
 }
 
+/* 聚焦時輸入框邊框顏色變化 */
 .block2 input:focus {
     border-color: #2980b9; /* 聚焦時改變邊框顏色 */
     outline: none; /* 去掉聚焦框 */
 }
-#reset{
-    width: 50px;
-    height: 35px;
-    margin: 15px 10px;
-    background: #dc3545;
+
+/* 重置按鈕樣式 */
+#reset {
+    width: 50px; /* 設置寬度 */
+    height: 35px; /* 設置高度 */
+    margin: 15px 10px; /* 設置邊距 */
+    background: #dc3545; /* 背景顏色 */
 }
+
+/* 響應式設計 */
 @media (max-width: 700px) {
     .page {
         flex-direction: column; /* 垂直排列 */
@@ -134,9 +144,10 @@ body {
         align-items: stretch; /* 拉伸子元素 */
     }
 
-    #reset{
-        margin: 10px 0px;
+    #reset {
+        margin: 10px 0px; /* 調整重置按鈕邊距 */
     }
+
     .console button,
     #reset,
     .block2 input {
