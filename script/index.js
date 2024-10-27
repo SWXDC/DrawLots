@@ -26,7 +26,7 @@ function initializeContent() {
 
 // 儲存內容至 cookie
 function save() {
-    setCookie("savedContent", content.value, 7); // 儲存 cookie，有效期 7 天
+    setCookie("savedContent", content.value, 3650); // 儲存 cookie，有效期 3650 天
     alert("內容已儲存!");
 }
 
