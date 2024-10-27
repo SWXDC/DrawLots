@@ -91,8 +91,8 @@ function random() {
 // 開始隨機選擇
 function start() {
     const randomResult = random(); // 隨機選擇一個數字
-    // 根據隨機結果顯示數字，或顯示無有效數字
-    number.textContent = randomResult !== null ? randomResult : "無有效數字"; 
+    // 根據隨機結果顯示數字，或顯示#
+    number.textContent = randomResult !== null ? randomResult : "#"; 
 }
 
 // 重置內容
