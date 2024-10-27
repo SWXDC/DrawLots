@@ -1,65 +1,99 @@
-var e = true;
-var content = document.querySelector("#content");
-var number = document.querySelector("#display-number");
-const first = content.value = "1 \n2 \n3 \n4";
+const DEFAULT_CONTENT = "1\n2\n3\n4"; // 使用換行符號而非 %0A
+let isBatchMode = true;
+const content = document.querySelector("#content");
+const number = document.querySelector("#display-number");
 
-content.addEventListener("keyup", function(action) {
-    console.log(content.value);
-});
+// 讀取 cookie
+function readCookie(name) {
+    const value = `; ${document.cookie}`;
+    console.log('Current cookies:', document.cookie); // Debug log
+    const parts = value.split(`; ${name}=`);
+    return parts.length === 2 ? parts.pop().split(';').shift() : null;
+}
 
+// 設置 cookie
+function setCookie(name, value, days) {
+    const expires = `expires=${new Date(Date.now() + days * 864e5).toUTCString()}`;
+    document.cookie = `${name}=${encodeURIComponent(value)}; ${expires}; path=/`;
+    console.log(`Cookie set: ${name}=${value}`); // 檢查設置的 cookie
+}
+
+// 初始化 textarea 內容
+function initializeContent() {
+    const savedContent = readCookie("savedContent");
+    content.value = savedContent ? decodeURIComponent(savedContent) : DEFAULT_CONTENT; // 解碼存儲的內容
+}
+
+// 儲存內容至 cookie
+function save() {
+    setCookie("savedContent", content.value, 7); // 儲存 cookie，有效期 7 天
+    alert("內容已儲存!");
+}
+
+// 讀取內容
+function load() {
+    const savedContent = readCookie("savedContent");
+    if (savedContent) {
+        content.value = decodeURIComponent(savedContent); // 使用 decodeURIComponent 解碼
+        alert("內容已讀取!");
+    } else {
+        alert("沒有找到儲存的內容!");
+    }
+}
+
+// 批量生成數字
 function batch() {
-    if (e === true) {
+    if (isBatchMode) {
         content.value = ""; 
     }
-    e = false;
-    var start = document.querySelector("#start");
-    var end = document.querySelector("#end");
+    isBatchMode = false;
 
-    // 驗證輸入
-    var startValue = parseInt(start.value);
-    var endValue = parseInt(end.value);
-    if (isNaN(startValue) || isNaN(endValue)) {
+    const start = parseInt(document.querySelector("#start").value);
+    const end = parseInt(document.querySelector("#end").value);
+
+    if (isNaN(start) || isNaN(end)) {
         alert("請輸入有效的數字！");
         return;
     }
 
-    var time = endValue - startValue;
-    for (let i = 0; i <= time; i++) {
-        content.value += (startValue + i) + "\n";
+    for (let i = start; i <= end; i++) {
+        content.value += `${i}\n`; // 使用 \n 來進行換行
     }
 }
 
+// 將 textarea 內容轉換為列表
 function convertToList() {
-    const text = content.value;
-    const list = text.split('\n').filter(Boolean); // 過濾空行
-    return list;
+    return content.value.split('\n').filter(Boolean); // 過濾空行
 }
 
-
-function random(time) {
+// 隨機選擇數字
+function random() {
     const list = convertToList();
-    if (time > 0 && list.length > 0) {
-        const randomIndex = Math.floor(Math.random() * list.length);
-        const randomValue = list[randomIndex]; // 隨機選擇的數字
-        // 刪除抽到的數字
-        const updatedList = list.filter((_, index) => index !== randomIndex);
-        // 將更新後的列表轉回 textarea
-        content.value = updatedList.join('\n');
-        return randomValue; // 返回隨機數字
-    }
-    return null; // 若無有效數據則返回 null
+    if (list.length === 0) return null;
+
+    const randomIndex = Math.floor(Math.random() * list.length);
+    const randomValue = list[randomIndex];
+    content.value = list.filter((_, index) => index !== randomIndex).join('\n'); // 刪除選中的數字
+    return randomValue; // 返回隨機數字
 }
 
+// 開始隨機選擇
 function start() {
-    const list = convertToList();
-    var time = list.length;
-    var randomResult = random(time);
+    const randomResult = random();
     number.textContent = randomResult !== null ? randomResult : "無有效數字"; // 顯示隨機數字
-    
 }
 
+// 重置內容
 function reset() {
-    e = true;
-    content.value = first; 
+    isBatchMode = true;
+    content.value = DEFAULT_CONTENT; 
     number.textContent = "#"; // 重設顯示
 }
+
+// 初始化內容
+initializeContent(); 
+
+// 監聽 keyup 事件
+content.addEventListener("keyup", () => {
+    console.log(content.value);
+});
