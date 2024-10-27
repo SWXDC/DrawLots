@@ -13,8 +13,9 @@ body {
 /* 頁面 */
 .page {
     display: flex;
-    flex-direction: column; 
-    align-items: center;
+    flex-direction: row; /* 水平方向排列 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center;
     margin: 0 auto; 
     padding: 20px; /* 增加內邊距 */
 }
@@ -24,7 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; /* 使用 align-items 而不是 align-content */
-    margin: 30px 0;
+    margin-right: 20px; /* 在顯示區和控制台之間增加間距 */
     border: 5px solid #333; /* 使用深色邊框 */
     border-radius: 25px;
     height: 500px;
@@ -40,27 +41,18 @@ body {
 
 /* 控制台 */
 .console {
-    width: 550px; 
-    margin-top: 10px;
     display: flex;
-    align-items: center; /* 垂直居中 */
+    flex-direction: column; /* 垂直排列 */
 }
 
-.console textarea {
-    width: 300px;
-    height: 250px;
-    font-size: 20px;
-    border: 2px solid #3498db; /* 設置邊框顏色 */
-    border-radius: 5px; /* 圓角邊框 */
-    padding: 10px; /* 增加內邊距 */
-    transition: border-color 0.3s; /* 增加過渡效果 */
+.block1, .block3, .block2 {
+    margin: 10px 0; /* 增加區塊之間的間距 */
+    display: flex; /* 使用flex來排列子元素 */
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 子元素水平居中 */
 }
 
-.console textarea:focus {
-    border-color: #2980b9; /* 聚焦時改變邊框顏色 */
-    outline: none; /* 去掉聚焦框 */
-}
-
+/* 控制台的按鈕 */
 .console button {
     margin: 10px 0;
     height: 50px;
@@ -78,16 +70,27 @@ body {
     background-color: #2980b9; /* 懸停時改變背景顏色 */
 }
 
-span {
-    display: flex;
-    justify-content: space-between;
+/* 其他 CSS 規則保持不變 */
+.console textarea {
+    width: 300px;
+    height: 250px;
+    font-size: 20px;
+    border: 2px solid #3498db; /* 設置邊框顏色 */
+    border-radius: 5px; /* 圓角邊框 */
+    padding: 10px; /* 增加內邊距 */
+    transition: border-color 0.3s; /* 增加過渡效果 */
+}
+
+.console textarea:focus {
+    border-color: #2980b9; /* 聚焦時改變邊框顏色 */
+    outline: none; /* 去掉聚焦框 */
 }
 
 /* 批量增加區域 */
 .block2 {
-    margin-left: 50px;
     display: flex; /* 使用flex來排列子元素 */
     flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 子元素水平居中 */
 }
 
 .block2 input {
@@ -104,7 +107,41 @@ span {
     border-color: #2980b9; /* 聚焦時改變邊框顏色 */
     outline: none; /* 去掉聚焦框 */
 }
+#reset{
+    width: 50px;
+    height: 35px;
+    margin: 15px 10px;
+    background: #dc3545;
+}
+@media (max-width: 700px) {
+    .page {
+        flex-direction: column; /* 垂直排列 */
+        align-items: stretch; /* 拉伸以填滿父元素 */
+    }
 
-.block3{
-    margin-left: 10px;
+    .display {
+        width: 100%; /* 讓顯示區域寬度填滿 */
+        margin-right: 0; /* 移除右側間距 */
+        margin-bottom: 20px; /* 在顯示區和控制台之間增加間距 */
+    }
+
+    .console {
+        width: 100%; /* 讓控制台寬度填滿 */
+    }
+
+    .block1, .block2, .block3 {
+        width: 100%; /* 各個區塊寬度填滿 */
+        align-items: stretch; /* 拉伸子元素 */
+    }
+
+    #reset{
+        margin: 10px 0px;
+    }
+    .console button,
+    #reset,
+    .block2 input {
+        width: 100%; /* 按鈕和輸入框寬度填滿 */
+        height: 50px; /* 統一按鈕高度 */
+        font-size: 18px; /* 調整字體大小 */
+    }
 }
