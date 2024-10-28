@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/index.css">
-    <link rel="icon" href="">
     <title>抽籤系統</title>
 </head>
 <body>
@@ -13,10 +12,12 @@
             <h1>抽籤系統</h1>
         </header>
         
+        <!-- 顯示區 -->
         <section class="display">
             <h1 id="display-number">#</h1>
         </section>
 
+        <!-- 控制台 -->
         <section class="console">
             <div class="controls">
                 <textarea id="content" placeholder="輸入內容..."></textarea>
@@ -36,6 +37,17 @@
                 </div>
                 <button onclick="batch()" class="batch-btn">增加</button>
             </div>
+            <!-- 自動抽籤 checkbox -->
+            <div id="checkbox-container">
+                <input type="checkbox" id="auto-draw">
+                <label for="auto-draw">自動抽籤</label>
+            </div>
+        </section>
+
+        <!-- 抽籤結果區域 -->
+        <section id="result-section">
+            <h2>抽籤結果</h2>
+            <ul id="result-list"></ul>
         </section>
 
         <footer class="footer">

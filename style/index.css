@@ -15,7 +15,6 @@ body {
     padding: 20px;
 }
 
-/* 頁面區域 */
 .page {
     width: 100%;
     max-width: 600px;
@@ -24,7 +23,6 @@ body {
     align-items: center;
 }
 
-/* 標題區 */
 .header {
     margin-bottom: 20px;
     font-size: 1.5rem;
@@ -32,7 +30,6 @@ body {
     text-align: center;
 }
 
-/* 顯示區 */
 .display {
     width: 100%;
     padding: 20px;
@@ -49,7 +46,6 @@ body {
     color: #2980b9;
 }
 
-/* 控制台區域 */
 .console {
     width: 100%;
     display: flex;
@@ -57,7 +53,6 @@ body {
     gap: 15px;
 }
 
-/* 控制台控制區 */
 .controls {
     display: flex;
     flex-direction: column;
@@ -90,7 +85,6 @@ body {
     transition: 0.3s;
 }
 
-/* 控制台按鈕樣式 */
 .action-btn { background: #4caf50; color: white; }
 .reset-btn { background: #e74c3c; color: white; }
 .save-btn { background: #3498db; color: white; }
@@ -99,7 +93,6 @@ body {
     opacity: 0.8;
 }
 
-/* 批量增加區 */
 .batch {
     text-align: center;
 }
@@ -132,7 +125,64 @@ body {
     width: 80px;
 }
 
-/* 頁尾 */
+/* 自動抽籤 checkbox 美化 */
+#checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#checkbox-container input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#checkbox-container input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    top: 0;
+    left: 3px;
+    font-size: 16px;
+    color: #3498db;
+}
+
+#checkbox-container label {
+    color: #333;
+    font-size: 1rem;
+}
+
+/* 抽籤結果區 */
+#result-section {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+#result-section h2 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#result-list {
+    list-style: none;
+    padding: 0;
+}
+
+#result-list li {
+    padding: 5px;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
 .footer {
     width: 100%;
     text-align: center;

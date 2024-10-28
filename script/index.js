@@ -1,6 +1,7 @@
 // 預設內容，包括多行數字
 const DEFAULT_CONTENT = "1\n2\n3\n4"; // 使用換行符號而非 %0A
 let isBatchMode = true; // 記錄是否處於批量生成模式
+let drawCount = 1; // 計數抽籤次數
 const content = document.querySelector("#content"); // 獲取 textarea 元素
 const number = document.querySelector("#display-number"); // 獲取顯示隨機數字的元素
 
@@ -39,6 +40,7 @@ function save() {
 // 讀取 cookie 中的內容並顯示在 textarea 中
 function load() {
     const savedContent = readCookie("savedContent"); // 讀取已保存的內容
+    reset();
     if (savedContent) {
         // 解碼並設置 textarea 的內容
         content.value = decodeURIComponent(savedContent);
@@ -88,11 +90,25 @@ function random() {
     return randomValue; // 返回隨機數字
 }
 
-// 開始隨機選擇
+// 開始隨機選擇的功能
 function start() {
     const randomResult = random(); // 隨機選擇一個數字
-    // 根據隨機結果顯示數字，或顯示#
-    number.textContent = randomResult !== null ? randomResult : "#"; 
+
+    if (randomResult !== null) {
+        // 若有結果，顯示數字並添加到結果列表
+        number.textContent = randomResult;
+        const resultList = document.getElementById("result-list");
+        const listItem = document.createElement("li");
+        listItem.textContent = `No.${drawCount++} 是 ${randomResult}`;
+        resultList.appendChild(listItem);
+
+        // 若自動抽籤選中，繼續抽直到抽完
+        if (document.getElementById("auto-draw").checked) {
+            setTimeout(start, 500); // 每0.5秒抽一次
+        }
+    } else {
+        number.textContent = "#"; // 若無數字可抽，顯示#
+    }
 }
 
 // 重置內容
@@ -100,6 +116,8 @@ function reset() {
     isBatchMode = true; // 重設為批量模式
     content.value = DEFAULT_CONTENT; // 恢復預設內容
     number.textContent = "#"; // 重設顯示
+    document.getElementById("result-list").innerHTML = ""; // 清空結果列表
+    drawCount = 1; // 重設抽籤次數
 }
 
 // 初始化內容
