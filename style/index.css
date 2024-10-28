@@ -1,177 +1,150 @@
-/* 初始化 */
+/* 基礎樣式 */
 * {
-    margin: 0; /* 設置默認邊距為0 */
-    padding: 0; /* 設置默認內邊距為0，確保各元素間距一致 */
-    box-sizing: border-box; /* 確保元素的總寬度和高度符合設置 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif; /* 設定字體 */
-    background-color: #f4f4f4; /* 設置背景顏色 */
-}
-
-/* 頁面容器 */
-.page {
-    display: flex; /* 使用flexbox布局 */
-    flex-direction: row; /* 水平方向排列 */
-    align-items: center; /* 垂直居中對齊 */
-    justify-content: center; /* 水平居中對齊 */
-    margin: 0 auto; /* 自動邊距使頁面居中 */
-    padding: 20px; /* 增加內邊距 */
-    min-height: 100vh;
-}
-
-/* 數字顯示區 */
-.display {
-    display: flex; /* 使用flexbox布局 */
-    justify-content: center; /* 水平居中對齊 */
-    align-items: center; /* 垂直居中對齊 */
-    margin-right: 20px; /* 在顯示區和控制台之間增加間距 */
-    border: 5px solid #333; /* 使用深色邊框 */
-    border-radius: 25px; /* 圓角邊框 */
-    height: 500px; /* 設置高度 */
-    width: 300px; /* 設置寬度 */
-    background-color: #fff; /* 增加背景顏色 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 增加陰影效果 */
-}
-
-/* 數字顯示標題 */
-.display h1 {
-    font-size: 150px; /* 調整字體大小 */
-    color: #2c3e50; /* 設置字體顏色 */
-}
-
-/* 控制台容器 */
-.console {
-    display: flex; /* 使用flexbox布局 */
-    flex-direction: column; /* 垂直排列 */
-}
-
-/* 控制台的區塊 */
-.block1, .block2, .block3 {
-    margin: 10px 0; /* 增加區塊之間的間距 */
-    display: flex; /* 使用flexbox布局 */
-    flex-direction: column; /* 垂直排列 */
-    align-items: center; /* 子元素水平居中 */
-}
-
-/* 控制台的按鈕樣式 */
-.console button {
-    margin: 10px 0; /* 增加按鈕間距 */
-    height: 50px; /* 按鈕高度 */
-    width: 100px; /* 按鈕寬度 */
-    font-size: 20px; /* 調整字體大小 */
-    background-color: #3498db; /* 按鈕背景顏色 */
-    color: white; /* 按鈕文字顏色 */
-    border: none; /* 去掉邊框 */
-    border-radius: 5px; /* 圓角按鈕 */
-    cursor: pointer; /* 鼠標懸停時變成手型 */
-    transition: background-color 0.3s; /* 增加過渡效果 */
-}
-
-/* 按鈕懸停效果 */
-.console button:hover {
-    background-color: #2980b9; /* 懸停時改變背景顏色 */
-}
-
-/* 控制台的文本區域樣式 */
-.console textarea {
-    width: 300px; /* 設置寬度 */
-    height: 250px; /* 設置高度 */
-    font-size: 20px; /* 調整字體大小 */
-    border: 2px solid #3498db; /* 設置邊框顏色 */
-    border-radius: 5px; /* 圓角邊框 */
-    padding: 10px; /* 增加內邊距 */
-    transition: border-color 0.3s; /* 增加過渡效果 */
-}
-
-/* 聚焦時文本區域邊框顏色變化 */
-.console textarea:focus {
-    border-color: #2980b9; /* 聚焦時改變邊框顏色 */
-    outline: none; /* 去掉聚焦框 */
-}
-
-/* 批量增加區域 */
-.block2 {
-    display: flex; /* 使用flexbox布局 */
-    flex-direction: column; /* 垂直排列 */
-    align-items: center; /* 子元素水平居中 */
-}
-
-/* 批量增加區域的輸入框樣式 */
-.block2 input {
-    height: 40px; /* 增加輸入框高度 */
-    width: 180px; /* 設置輸入框寬度 */
-    font-size: 20px; /* 調整字體大小 */
-    padding: 5px; /* 增加內邊距 */
-    border: 2px solid #3498db; /* 設置邊框顏色 */
-    border-radius: 5px; /* 圓角邊框 */
-    transition: border-color 0.3s; /* 增加過渡效果 */
-}
-
-/* 聚焦時輸入框邊框顏色變化 */
-.block2 input:focus {
-    border-color: #2980b9; /* 聚焦時改變邊框顏色 */
-    outline: none; /* 去掉聚焦框 */
-}
-
-/* 重置按鈕樣式 */
-#reset {
-    width: 50px; /* 設置寬度 */
-    height: 35px; /* 設置高度 */
-    margin: 15px 10px; /* 設置邊距 */
-    background: #dc3545; /* 背景顏色 */
-}
-/* 網站尾頁 */
-.footer{
-    height: 80px;
-    width: 100%;
-    background: #e0e0e0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: #333;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 頁面區域 */
+.page {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 標題區 */
+.header {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* 顯示區 */
+.display {
+    width: 100%;
+    padding: 20px;
+    border: 4px solid #333;
+    border-radius: 20px;
+    background: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.display h1 {
+    font-size: 3rem;
+    color: #2980b9;
+}
+
+/* 控制台區域 */
+.console {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 控制台控制區 */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    resize: none;
+    font-size: 1rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.action-btn, .reset-btn, .save-btn, .load-btn, .batch-btn {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 控制台按鈕樣式 */
+.action-btn { background: #4caf50; color: white; }
+.reset-btn { background: #e74c3c; color: white; }
+.save-btn { background: #3498db; color: white; }
+.load-btn { background: #f1c40f; color: #333; }
+.action-btn:hover, .reset-btn:hover, .save-btn:hover, .load-btn:hover {
+    opacity: 0.8;
+}
+
+/* 批量增加區 */
+.batch {
+    text-align: center;
+}
+
+.batch h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.batch-input {
+    display: flex;
+    gap: 5px;
     justify-content: center;
-    flex-wrap: wrap;
-    h1{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    a{
-        text-decoration: none;
-        color: #2980b9;
-    }
-}
-/* 響應式設計 */
-@media (max-width: 700px) {
-    .page {
-        flex-direction: column; /* 垂直排列 */
-        align-items: stretch; /* 拉伸以填滿父元素 */
-    }
-
-    .display {
-        width: 100%; /* 讓顯示區域寬度填滿 */
-        margin-right: 0; /* 移除右側間距 */
-        margin-bottom: 20px; /* 在顯示區和控制台之間增加間距 */
-    }
-
-    .console {
-        width: 100%; /* 讓控制台寬度填滿 */
-    }
-
-    .block1, .block2, .block3 {
-        width: 100%; /* 各個區塊寬度填滿 */
-        align-items: stretch; /* 拉伸子元素 */
-    }
-
-    #reset {
-        margin: 10px 0px; /* 調整重置按鈕邊距 */
-    }
-
-    .console button,
-    #reset,
-    .block2 input {
-        width: 100%; /* 按鈕和輸入框寬度填滿 */
-        height: 50px; /* 統一按鈕高度 */
-        font-size: 18px; /* 調整字體大小 */
-    }
+    align-items: center;
 }
 
+.batch-input input {
+    width: 80px;
+    padding: 8px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.batch-btn {
+    margin-top: 10px;
+    background: #8e44ad;
+    color: white;
+    font-size: 1rem;
+    width: 80px;
+}
+
+/* 頁尾 */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #2980b9;
+}

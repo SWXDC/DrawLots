@@ -9,37 +9,40 @@
 </head>
 <body>
     <div class="page">
-        <div class="display">
+        <header class="header">
+            <h1>抽籤系統</h1>
+        </header>
+        
+        <section class="display">
             <h1 id="display-number">#</h1>
-        </div>
-        <div class="console">
-            <div class="block1">
-                <span>
-                    <button onclick="start()">開始</button>
-                    <button id="reset" onclick="reset()">重設</button>
-                </span>
+        </section>
+
+        <section class="console">
+            <div class="controls">
                 <textarea id="content" placeholder="輸入內容..."></textarea>
-
+                <div class="buttons">
+                    <button onclick="start()" class="action-btn">開始</button>
+                    <button id="reset" onclick="reset()" class="reset-btn">重設</button>
+                    <button onclick="save()" class="save-btn">儲存</button>
+                    <button onclick="load()" class="load-btn">讀取</button>
+                </div>
             </div>
-            <div class="block3">
-                <button onclick="save()">儲存</button>
-                <button onclick="load()">讀取</button>
+            <div class="batch">
+                <h2>批量增加</h2>
+                <div class="batch-input">
+                    <input id="start" type="text" placeholder="開始">
+                    <span>至</span>
+                    <input id="end" type="text" placeholder="結束">
+                </div>
+                <button onclick="batch()" class="batch-btn">增加</button>
             </div>
-            <div class="block2">
-                <h1>批量增加</h1>
-                <input id="start" type="text" placeholder="開始">
-                <h1>↓</h1>
-                <input id="end" type="text" placeholder="結束">
-                <button onclick="batch()">增加</button>
-            </div>
+        </section>
 
-        </div>
-
+        <footer class="footer">
+            <h1>作者: 80706</h1>
+            <h1>開源連結: <a href="https://github.com/SWXDC/DrawLots" target="_blank">連結</a></h1>
+        </footer>
     </div>
-    <footer class="footer">
-        <h1>作者:80706</h1>
-        <h1>開源連結: <a href="https://github.com/SWXDC/DrawLots" target="_blank">連結</a></h1>
-    </footer>
     <script src="/script/index.js"></script>
 </body>
 </html>
