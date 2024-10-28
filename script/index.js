@@ -104,7 +104,7 @@ function start() {
 
         // 若自動抽籤選中，繼續抽直到抽完
         if (document.getElementById("auto-draw").checked) {
-            setTimeout(start, 500); // 每0.5秒抽一次
+            setTimeout(start, 100); // 每0.5秒抽一次
         }
     } else {
         number.textContent = "#"; // 若無數字可抽，顯示#
